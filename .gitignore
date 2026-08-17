@@ -1,0 +1,11 @@
+# Ignore OS and editor temporary files
+Thumbs.db
+.DS_Store
+*.tmp
+~$*
+
+# Node (if used later)
+node_modules/
+
+# Build output
+dist/

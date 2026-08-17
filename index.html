@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio | [Nama Lengkap]</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #2563eb;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        /* ================= HOME ================= */
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+        }
+
+        .home-content {
+            text-align: center;
+            max-width: 750px;
+        }
+
+        .home-content .hello {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .home-content h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: #2563eb;
+        }
+
+        .home-content p {
+            color: #64748b;
+            max-width: 650px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #2563eb;
+            color: #2563eb;
+            background: white;
+        }
+
+        .btn-outline:hover {
+            background: #eff6ff;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+
+        .about-card h3 {
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+
+        .about-card p {
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* ================= EXPERIENCE ================= */
+
+        .experience-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border-left: 5px solid #2563eb;
+        }
+
+        .experience-card h3 {
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .experience-card .company {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .experience-card ul {
+            padding-left: 20px;
+            color: #64748b;
+        }
+
+        .experience-card li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= PROJECT ================= */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-number {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech span {
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* ================= CERTIFICATE ================= */
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .certificate-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .certificate-card h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .certificate-card p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .certificate-card button {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .contact-card .icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .contact-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            max-height: 90vh;
+            overflow: auto;
+        }
+
+        .modal-content img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: inline-block;
+            }
+
+            .nav-links.mobile-active {
+                display: flex;
+                position: absolute;
+                top: 64px;
+                right: 20px;
+                background: white;
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px;
+                border-radius: 10px;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+                z-index: 1200;
+            }
+
+            .home-content h1 {
+                font-size: 36px;
+            }
+
+            .about-container,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            /* Mobile button & spacing improvements */
+            .buttons {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 420px;
+                padding: 14px 18px;
+                font-size: 16px;
+            }
+
+            section {
+                padding: 70px 16px;
+            }
+
+            .nav-container {
+                padding: 12px 16px;
+            }
+
+            .section-title h2 {
+                font-size: 24px;
+            }
+
+            .home-content p {
+                padding: 0 6px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-content h1 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 60px 12px;
+            }
+
+            .btn {
+                font-size: 15px;
+                padding: 12px 16px;
+            }
+
+            .modal-content {
+                padding: 12px;
+            }
+
+            .modal-content img {
+                height: auto;
+                max-height: 80vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">Portfolio.</div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#certificate">Sertifikat</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home">
+
+    <div class="home-content">
+
+        <div class="hello">
+            Halo, saya
+        </div>
+
+        <h1>
+            AINUN HUSNUL SADIAH
+        </h1>
+
+        <p>
+            Lulusan SMK yang disiplin, bertanggung jawab, teliti,
+            dan memiliki semangat untuk belajar serta berkembang
+            di dunia kerja.
+        </p>
+
+        <div class="buttons">
+
+            <!-- Ganti cv.pdf dengan nama file CV kamu -->
+                <a href="cv (1).pdf" download="CV-AINUN.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Download CV
+                </a>
+
+            <a href="#certificate" class="btn btn-outline">
+                Lihat Sertifikat
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Hubungi Saya
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="section-title">
+        <h2>About Me</h2>
+        <p>Mengenal saya lebih dekat</p>
+    </div>
+
+    <div class="about-container">
+
+        <div class="about-card">
+
+            <h3>🎓 Pendidikan</h3>
+
+            <p>
+                Saya merupakan lulusan SMK Negeri 8 Jember.
+                Selama menempuh pendidikan, saya mempelajari
+                berbagai keterampilan dan terbiasa mengerjakan
+                tugas serta proyek secara individu maupun bersama tim.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>💼 Pengalaman PKL</h3>
+
+            <p>
+                Saya memiliki pengalaman Praktik Kerja Lapangan
+                di CV Sinergi Teknokarya dan mendapatkan pengalaman
+                mengenal lingkungan kerja secara langsung.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>🌱 Kepribadian</h3>
+
+            <p>
+                Saya merupakan pribadi yang disiplin, teliti,
+                bertanggung jawab, mau belajar, mampu bekerja sama,
+                dan mampu beradaptasi dengan lingkungan baru.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>🚀 Kesiapan Bekerja</h3>
+
+            <p>
+                Saya siap belajar hal baru, menerima arahan,
+                bekerja sama dengan tim, dan mengembangkan kemampuan
+                untuk memberikan hasil kerja yang baik.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills">
+
+    <div class="section-title">
+        <h2>Skills</h2>
+        <p>Kemampuan yang saya miliki</p>
+    </div>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <div class="skill-icon">⏰</div>
+            <h3>Disiplin</h3>
+            <p>
+                Mampu mengikuti aturan dan jadwal yang telah ditentukan.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🔍</div>
+            <h3>Ketelitian</h3>
+            <p>
+                Berusaha teliti dalam menyelesaikan tugas.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🤝</div>
+            <h3>Kerja Tim</h3>
+            <p>
+                Mampu bekerja sama dengan orang lain.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">✅</div>
+            <h3>Tanggung Jawab</h3>
+            <p>
+                Menyelesaikan tugas yang diberikan dengan baik.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🔄</div>
+            <h3>Adaptasi</h3>
+            <p>
+                Mampu menyesuaikan diri dengan lingkungan baru.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3>Komputer</h3>
+            <p>
+                Memiliki kemampuan dasar menggunakan komputer.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section id="experience">
+
+    <div class="section-title">
+        <h2>Experience</h2>
+        <p>Pengalaman yang saya miliki</p>
+    </div>
+
+    <div class="experience-card">
+
+        <h3>Praktik Kerja Lapangan</h3>
+
+        <div class="company">
+            CV Sinergi Teknokarya
+        </div>
+
+        <ul>
+            <li>Mengenal lingkungan kerja secara langsung.</li>
+            <li>Mengikuti aturan dan jadwal kerja.</li>
+            <li>Mengerjakan tugas yang diberikan.</li>
+            <li>Belajar bekerja secara disiplin dan bertanggung jawab.</li>
+            <li>Berkomunikasi dan bekerja sama dengan orang lain.</li>
+            <li>Beradaptasi dengan lingkungan kerja baru.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECT ================= -->
+
+<section id="project">
+
+    <div class="section-title">
+        <h2>Project</h2>
+        <p>Beberapa proyek yang pernah saya kerjakan</p>
+    </div>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+
+            <div class="project-number">
+                PROJECT 01
+            </div>
+
+            <h3>📖 Buku Agenda Surat Digital</h3>
+
+            <p>
+                Website untuk membantu pengelolaan agenda surat
+                secara digital agar data surat dapat dicatat
+                dan dikelola dengan lebih terorganisir.
+            </p>
+
+            <div class="tech">
+                <span>Laravel</span>
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <div class="project-number">
+                PROJECT 02
+            </div>
+
+            <h3>📚 Website Perpustakaan</h3>
+
+            <p>
+                Website untuk membantu pengelolaan data perpustakaan
+                secara digital.
+            </p>
+
+            <div class="tech">
+                <span>Laravel</span>
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CERTIFICATE ================= -->
+
+<section id="certificate">
+
+    <div class="section-title">
+        <h2>Sertifikat</h2>
+        <p>Sertifikat dan pencapaian saya</p>
+    </div>
+
+    <div class="certificate-grid">
+
+        <!-- SERTIFIKAT 1 -->
+
+        <div class="certificate-card">
+
+            <h3>Sertifikat [Pemrograman Fundamental Menggunakan Java]</h3>
+
+            <p>
+                <strong>Penyelenggara:</strong>
+                [Kelas Industri Hummatech PT Hummatech Teknologi Indonesia]
+            </p>
+
+            <p>
+                <strong>Tahun:</strong>
+                [2024]
+            </p>
+
+            <button
+                class="btn btn-primary"
+                onclick="openModal('sertifikat 1.jpeg')">
+                Lihat Sertifikat
+            </button>
+
+        </div>
+
+
+        <!-- SERTIFIKAT 2 -->
+
+        <div class="certificate-card">
+
+            <h3>Sertifikat [Pemrograman Front End Web dengan Bootstrap]</h3>
+
+            <p>
+                <strong>Penyelenggara:</strong>
+                [Kelas Industri Hummatech  PT Hummatech Teknologi Indonesia]
+            </p>
+
+            <p>
+                <strong>Tahun:</strong>
+                [2025]
+            </p>
+
+            <button
+                class="btn btn-primary"
+                onclick="openModal('sertifikat  2.jpeg')">
+                Lihat Sertifikat
+            </button>
+
+        </div>
+
+
+        <!-- SERTIFIKAT 3 -->
+
+        <div class="certificate-card">
+
+            <h3>Sertifikat [Sertifikat Magang]</h3>
+
+            <p>
+                <strong>Penyelenggara:</strong>
+                [CV Sinergi Teknokarya]
+            </p>
+
+            <p>
+                <strong>Tahun:</strong>
+                [2026]
+            </p>
+
+            <button
+                class="btn btn-primary"
+                onclick="openModal('sertifikat  3.jpeg')">
+                Lihat Sertifikat
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="section-title">
+        <h2>Contact</h2>
+        <p>Hubungi saya</p>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-card">
+
+            <div class="icon">📧</div>
+
+            <h3>Email</h3>
+
+            <p>
+                ainunhusnulsadiah@gmail.com
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">📱</div>
+
+            <h3>WhatsApp</h3>
+
+            <p>
+                085784708395
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">📍</div>
+
+            <h3>Lokasi</h3>
+
+            <p>
+                Sukorejo, Bangsalsari,Jember, Jawa Timur
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 [Ainun Husnul Sadiah]. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= MODAL SERTIFIKAT ================= -->
+
+<div class="modal" id="certificateModal">
+
+    <div class="modal-content">
+
+        <button class="close" onclick="closeModal()">
+            ×
+        </button>
+
+        <img id="certificateImage" src="" alt="Sertifikat">
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function openModal(image) {
+
+        document.getElementById("certificateImage").src = image;
+
+        document
+            .getElementById("certificateModal")
+            .classList.add("active");
+    }
+
+
+    function closeModal() {
+
+        document
+            .getElementById("certificateModal")
+            .classList.remove("active");
+
+        document.getElementById("certificateImage").src = "";
+    }
+
+
+    // Klik area luar modal untuk menutup
+    document
+        .getElementById("certificateModal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+                closeModal();
+            }
+
+        });
+
+
+    // Tombol ESC untuk menutup modal
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+            closeModal();
+        }
+
+    });
+
+    // Toggle navigation for mobile
+    function toggleNav() {
+        var nav = document.querySelector('.nav-links');
+        nav.classList.toggle('mobile-active');
+    }
+
+    // Close mobile nav when link clicked
+    document.querySelectorAll('.nav-links a').forEach(function(el){
+        el.addEventListener('click', function(){
+            var nav = document.querySelector('.nav-links');
+            if (nav.classList.contains('mobile-active')) nav.classList.remove('mobile-active');
+        });
+    });
+
+</script>
+
+</body>
+</html>
